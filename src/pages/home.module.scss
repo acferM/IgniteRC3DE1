@@ -1,1 +1,45 @@
-// TODO
+.header {
+  img {
+    margin-top: 5rem;
+  }
+}
+
+
+.content {
+  margin-top: 4rem;
+}
+
+.post {
+  a {
+    h1 {
+      font-size: 1.75rem;
+    }
+
+    > p {
+      margin-top: 8px;
+      font-size: 1.125rem;
+    }
+
+    footer {
+      margin-top: 25px;
+    }
+  }
+
+  & + .post {
+    margin-top: 3.125rem;
+  }
+}
+
+.info {
+  display: flex;
+  align-items: center;
+}
+
+.loadMoreButton {
+  background: transparent;
+  border: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--pink-700);
+  margin-top: 4.125rem;
+}

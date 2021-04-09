@@ -1,1 +1,18 @@
-// TODO
+.container {
+  width: 100%;
+  padding: 0 23.125rem 5rem;
+}
+
+.postInfo {
+  display: flex;
+  align-items: center;
+
+  & + div {
+    margin-left: 1.5rem;
+  }
+
+  p, time {
+    font-size: 0.875rem;
+    margin-left: 0.5rem;
+  }
+}
