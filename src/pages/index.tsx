@@ -3,11 +3,13 @@ import { GetStaticProps } from 'next';
 import Link from 'next/link';
 import { FiCalendar, FiUser } from 'react-icons/fi';
 import Prismic from '@prismicio/client';
+import { format } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
+
 import { getPrismicClient } from '../services/prismic';
 
 import commonStyles from '../styles/common.module.scss';
 import styles from './home.module.scss';
-import { formatDate } from '../utils/formatDate';
 
 interface Post {
   uid?: string;
@@ -37,7 +39,11 @@ export default function Home({ postsPagination }: HomeProps): JSX.Element {
       .then(response => response.json())
       .then(data => {
         const formattedResults = data.results.map(result => {
-          const formattedDate = formatDate(result.first_publication_date);
+          const formattedDate = format(
+            new Date(result.first_publication_date),
+            'dd MMM yyyy',
+            { locale: ptBR }
+          );
 
           return {
             ...result,
@@ -66,7 +72,13 @@ export default function Home({ postsPagination }: HomeProps): JSX.Element {
                 <footer className={styles.info}>
                   <div className={commonStyles.postInfo}>
                     <FiCalendar size={20} color="#BBBBBB" />
-                    <time>{formatDate(post.first_publication_date)}</time>
+                    <time>
+                      {format(
+                        new Date(post.first_publication_date),
+                        'dd MMM yyyy',
+                        { locale: ptBR }
+                      )}
+                    </time>
                   </div>
                   <div className={commonStyles.postInfo}>
                     <FiUser size={20} color="#BBBBBB" />

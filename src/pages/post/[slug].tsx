@@ -1,16 +1,16 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
-import Prismic from '@prismicio/client';
-
-import { FiCalendar, FiClock, FiUser } from 'react-icons/fi';
-import { RichText } from 'prismic-dom';
 import { useRouter } from 'next/router';
+import Prismic from '@prismicio/client';
+import { format } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
+import { FiCalendar, FiClock, FiUser } from 'react-icons/fi';
+
 import { getPrismicClient } from '../../services/prismic';
 
 import Header from '../../components/Header';
 
 import commonStyles from '../../styles/common.module.scss';
 import styles from './post.module.scss';
-import { formatDate } from '../../utils/formatDate';
 
 interface Post {
   first_publication_date: string | null;
@@ -72,7 +72,11 @@ export default function Post({ post }: PostProps): JSX.Element {
           <ul className={styles.postInfoList}>
             <li>
               <FiCalendar size={20} color="#BBBBBB" />
-              <time>{formatDate(post.first_publication_date)}</time>
+              <time>
+                {format(new Date(post.first_publication_date), 'dd MMM yyyy', {
+                  locale: ptBR,
+                })}
+              </time>
             </li>
             <li>
               <FiUser size={20} color="#BBBBBB" />
