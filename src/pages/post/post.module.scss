@@ -10,6 +10,13 @@
     color: var(--gray-50);
     font-weight: 700;
   }
+
+  > p {
+    font-style: italic;
+    font-size: 0.875rem;
+    margin-top: 1.125rem;
+    color: var(--gray-300);
+  }
 }
 
 .postInfoList {
@@ -54,5 +61,35 @@
       margin-left: 2rem;
       margin-top: 1.5625rem;
     }
+  }
+}
+
+.postFooter {
+  margin-top: 3.75rem;
+  border-top: 1px solid #d7d7d7;
+  padding-top: 3rem;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.postPrev {
+  p {
+    font-size: 1.125rem;
+    letter-spacing: -0.5px;
+  }
+
+  a {
+    color: var(--pink-700);
+    font-weight: 600;
+    margin-top: 0.5rem;
+    letter-spacing: -0.5px;
+  }
+
+  &.right {
+    text-align: right;
   }
 }
